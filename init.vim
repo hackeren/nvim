@@ -404,11 +404,22 @@ endfunc
 " ===
 
 call plug#begin('~/.config/nvim/plugged')
+" Nerdfont
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+Plug 'lambdalisue/fern-hijack.vim'
+
+
+" Airline-themes
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Plug 'LoricAndre/fzterm.nvim'
 
 " Testing my own plugin
-" Plug 'theniceboy/vim-calc'
+Plug 'theniceboy/vim-calc'
 
 " Treesitter
 " Plug 'nvim-treesitter/nvim-treesitter'
@@ -447,7 +458,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wellle/tmux-complete.vim'
 
 " Snippets
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'theniceboy/vim-snippets'
 
 " Undo Tree
@@ -533,6 +544,7 @@ Plug 'dkarter/bullets.vim'
 " Editor Enhancement
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'mg979/vim-visual-multi'
 Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
 Plug 'theniceboy/antovim' " gs to switch
@@ -638,7 +650,12 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " ===
 " === eleline.vim
 " ===
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
+"let g:airline_theme='deus'
+let g:airline_theme='dark'
+" 设置字体 
+set guifont=Powerline_Consolas:h14:cANSI
+let g:Powerline_symbols = 'fancy'       " Powerline_symbols为状态栏中的箭头，unicode没有箭头
 
 
 " ==
@@ -762,7 +779,7 @@ vmap <C-e> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<c-e>'
 let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
-let g:snips_author = 'David Chen'
+let g:snips_author = 'hackeren'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
@@ -834,9 +851,9 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
+" \   '<C-k>': ['<C-u>'],
+" \   '<C-j>': ['<C-e>'],
 let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-u>'],
-\   '<C-j>': ['<C-e>'],
 \   '<C-]>': ['<C-v>'],
 \   '<C-p>': ['<C-n>'],
 \}
@@ -902,28 +919,28 @@ endfunc
 " ==
 " == vim-multiple-cursor
 " ==
-"let g:multi_cursor_use_default_mapping = 0
-"let g:multi_cursor_start_word_key = '<c-k>'
-"let g:multi_cursor_select_all_word_key = '<a-k>'
-"let g:multi_cursor_start_key = 'g<c-k>'
-"let g:multi_cursor_select_all_key = 'g<a-k>'
-"let g:multi_cursor_next_key = '<c-k>'
-"let g:multi_cursor_prev_key = '<c-p>'
-"let g:multi_cursor_skip_key = '<C-s>'
-"let g:multi_cursor_quit_key = '<Esc>'
+let g:multi_cursor_use_default_mapping = 1
+" let g:multi_cursor_start_word_key = '<c-k>'
+" let g:multi_cursor_select_all_word_key = '<a-k>'
+" let g:multi_cursor_start_key = 'g<c-k>'
+" let g:multi_cursor_select_all_key = 'g<a-k>'
+" let g:multi_cursor_next_key = '<c-k>'
+" let g:multi_cursor_prev_key = '<c-p>'
+" let g:multi_cursor_skip_key = '<C-s>'
+" let g:multi_cursor_quit_key = '<Esc>'
 
 
 " ===
 " === vim-visual-multi
 " ===
-"let g:VM_theme             = 'iceblue'
-"let g:VM_default_mappings = 0
+let g:VM_theme             = 'iceblue'
+let g:VM_default_mappings = 1
 " let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
 " let g:VM_maps                       = {}
 " let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
 " let g:VM_maps['i']                  = 'k'
 " let g:VM_maps['I']                  = 'K'
-" let g:VM_maps['Find Under']         = '<C-k>'
+" " let g:VM_maps['Find Under']         = '<C-k>'
 " let g:VM_maps['Find Subword Under'] = '<C-k>'
 " let g:VM_maps['Find Next']          = ''
 " let g:VM_maps['Find Prev']          = ''
@@ -990,22 +1007,21 @@ let g:scrollstatus_size = 15
 " ===
 noremap <LEADER>gi :FzfGitignore<CR>
 
-
 " ===
 " === Ultisnips
 " ===
-" let g:tex_flavor = "latex"
-" inoremap <c-n> <nop>
-" let g:UltiSnipsExpandTrigger="<c-e>"
-" let g:UltiSnipsJumpForwardTrigger="<c-e>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-n>"
-" let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips/']
-" silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
-" " Solve extreme insert-mode lag on macOS (by disabling autotrigger)
-" augroup ultisnips_no_auto_expansion
-"     au!
-"     au VimEnter * au! UltiSnips_AutoTrigger
-" augroup END
+let g:tex_flavor = "latex"
+inoremap <c-e> <nop>
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<c-n>"
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips/']
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
+" Solve extreme insert-mode lag on macOS (by disabling autotrigger)
+augroup ultisnips_no_auto_expansion
+    au!
+    au VimEnter * au! UltiSnips_AutoTrigger
+augroup END
 
 
 
