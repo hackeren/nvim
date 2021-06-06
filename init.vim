@@ -258,8 +258,8 @@ noremap = n
 " Use <space> + new arrow keys for moving the cursor around windows
 noremap <LEADER>w <C-w>w
 noremap <LEADER>k <C-w>k
-noremap <LEADER>j <C-w>j
-noremap <LEADER>n <C-w>h
+noremap <LEADER>n <C-w>j
+noremap <LEADER>h <C-w>h
 noremap <LEADER>l <C-w>l
 noremap qf <C-w>o
 
@@ -909,10 +909,14 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 function g:Undotree_CustomMap()
-nmap <buffer> u <plug>UndotreeNextState
-nmap <buffer> e <plug>UndotreePreviousState
-nmap <buffer> U 5<plug>UndotreeNextState
-nmap <buffer> E 5<plug>UndotreePreviousState
+" nmap <buffer> u <plug>UndotreeNextState
+" nmap <buffer> e <plug>UndotreePreviousState
+" nmap <buffer> U 5<plug>UndotreeNextState
+" nmap <buffer> E 5<plug>UndotreePreviousState
+nmap <buffer> k <plug>UndotreeNextState
+nmap <buffer> j <plug>UndotreePreviousState
+nmap <buffer> K 5<plug>UndotreeNextState
+nmap <buffer> J 5<plug>UndotreePreviousState
 endfunc
 
 
