@@ -230,8 +230,7 @@ source $XDG_CONFIG_HOME/nvim/cursor.vim
 " ===
 " === Insert Mode Cursor Movement
 " ===
-inoremap <C-a> <ESC>A
-
+inoremap <C-0> <ESC>A
 
 " ===
 " === Command Mode Cursor Movement
@@ -260,7 +259,7 @@ noremap = n
 noremap <LEADER>w <C-w>w
 noremap <LEADER>k <C-w>k
 noremap <LEADER>j <C-w>j
-noremap <LEADER>h <C-w>h
+noremap <LEADER>n <C-w>h
 noremap <LEADER>l <C-w>l
 noremap qf <C-w>o
 
@@ -280,7 +279,7 @@ noremap <left> :vertical resize+5<CR>
 noremap <right> :vertical resize-5<CR>
 
 " Place the two screens up and down
-noremap sx <C-w>t<C-w>K
+noremap sn <C-w>t<C-w>K
 " Place the two screens side by side
 noremap sv <C-w>t<C-w>H
 
@@ -465,6 +464,12 @@ Plug 'kdheepak/lazygit.nvim'
 " Autoformat
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
+
+" FIGLet
+Plug 'fadein/vim-FIGlet'
+" Markdown-Preview
+Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/mathjax-support-for-mkdp'
 
 " Tex
 " Plug 'lervag/vimtex'
@@ -1018,7 +1023,7 @@ let maplocalleader=' '
 " ===
 " === vim-calendar
 " ===
-" noremap \c :Calendar -position=here<CR>
+noremap \c :Calendar -position=here<CR>
 noremap \\ :Calendar -view=clock -position=here<CR>
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
