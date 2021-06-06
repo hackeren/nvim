@@ -103,7 +103,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 ## Keyboard Shortcuts
 ### 1 Basic Editor Features
 #### 1.1 The Most Basics
-**`k`** : switchs to **`INSERT`** : mode (same as key `i` in vanilla vim)
+**`i`** : switchs to **`INSERT`** : mode (same as key `i` in vanilla vim)
 
 **`Q`** : quits current vim window (same as command `:q` in vanilla vim)
 
@@ -111,21 +111,20 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 
 **_IMPORTANT_**
 
-  Since the `i` key has been mapped to `k`, every command (combination) that involves `i` should use `k` instead (for example, `ciw` should be `ckw`).
 
 #### 1.2 Remapped Cursor Movement
 | Shortcut   | Action                                                    | Equivalent |
 |------------|-----------------------------------------------------------|------------|
-| `u`        | Cursor up a terminal line                                 | `k`        |
-| `e`        | Cursor down a terminal line                               | `j`        |
-| `n`        | Cursor left                                               | `h`        |
-| `i`        | Cursor right                                              | `l`        |
-| `U`        | Cursor up 5 terminal lines                                | `5k`       |
-| `E`        | Cursor down 5 terminal lines                              | `5j`       |
+| `k`        | Cursor up a terminal line                                 | `k`        |
+| `j`        | Cursor down a terminal line                               | `j`        |
+| `h`        | Cursor left                                               | `h`        |
+| `l`        | Cursor right                                              | `l`        |
+| `K`        | Cursor up 5 terminal lines                                | `5k`       |
+| `J`        | Cursor down 5 terminal lines                              | `5j`       |
 | `N`        | Cursor to the start of the line                           | `0`        |
 | `I`        | Cursor to the end of the line                             | `$`        |
-| `Ctrl` `u` | Move the view port up 5 lines without moving the cursor   | `Ctrl` `y` |
-| `Ctrl` `e` | Move the view port down 5 lines without moving the cursor | `Ctrl` `e` |
+| `Ctrl` `k` | Move the view port up 5 lines without moving the cursor   | `Ctrl` `y` |
+| `Ctrl` `j` | Move the view port down 5 lines without moving the cursor | `Ctrl` `e` |
 | `h`        | Move to the end of this word                              | `e`        |
 | `W`        | Move cursor five words forward                            | `5w`       |
 | `B`        | Move cursor five words forward                            | `5b`       |
@@ -167,23 +166,23 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 #### 2.1 Creating Window Through Split Screen
 | Shortcut    | Action                                                                      |
 |-------------|-----------------------------------------------------------------------------|
-| `s` `u`     | Create a new horizontal split screen and place it above the current window  |
-| `s` `e`     | Create a new horizontal split screen and place it below the current window  |
-| `s` `n`     | Create a new vertical split screen and place it left to the current window  |
+| `s` `k`     | Create a new horizontal split screen and place it above the current window  |
+| `s` `j`     | Create a new horizontal split screen and place it below the current window  |
+| `s` `h`     | Create a new vertical split screen and place it left to the current window  |
 | `s` `i`     | Create a new vertical split screen and place it right to the current window |
 | `s` `v`     | Set the two splits to be vertical                                           |
-| `s` `h`     | Set the two splits to be horizontal                                         |
+| `s` `x`     | Set the two splits to be horizontal                                         |
 | `s` `r` `v` | Rotate splits and arrange splits vertically                                 |
-| `s` `r` `h` | Rotate splits and arrange splits horizontally                               |
+| `s` `r` `x` | Rotate splits and arrange splits horizontally                               |
 
 #### 2.2 Moving the Cursor Between Different Windows
 | Shortcut      | Action                         |
 |---------------|--------------------------------|
 | `SPACE` + `w` | Move cursor to the next window |
-| `SPACE` + `n` | Move cursor one window left    |
-| `SPACE` + `i` | Move cursor one window right   |
-| `SPACE` + `u` | Move cursor one window up      |
-| `SPACE` + `e` | Move cursor one window down    |
+| `SPACE` + `h` | Move cursor one window left    |
+| `SPACE` + `l` | Move cursor one window right   |
+| `SPACE` + `k` | Move cursor one window up      |
+| `SPACE` + `j` | Move cursor one window down    |
 
 #### 2.3 Resizing Different Windows
 Use the arrow keys to resize the current window.
