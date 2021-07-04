@@ -89,7 +89,7 @@ set lazyredraw "same as above
 set visualbell
 silent !mkdir -p ~/.config/nvim/tmp/backup
 silent !mkdir -p ~/.config/nvim/tmp/undo
-"silent !mkdir -p ~/.config/nvim/tmp/sessions
+silent !mkdir -p ~/.config/nvim/tmp/sessions
 set backupdir=~/.config/nvim/tmp/backup,.
 set directory=~/.config/nvim/tmp/backup,.
 if has('persistent_undo')
@@ -290,6 +290,8 @@ noremap srv <C-w>b<C-w>H
 " Press <SPACE> + q to close the window below the current window
 noremap <LEADER>q <C-w>j:q<CR>
 
+nnoremap <silent> <F2> :nohlsearch<CR>
+inoremap <silent> <F2> <C-O>:nohlsearch<CR>
 
 " ===
 " === Tab management
@@ -323,7 +325,7 @@ nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 " Opening a terminal window
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
-" Press space twice to jump to the next '<++>' and edit it
+" Press space twice to jump to the next '' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
@@ -597,9 +599,9 @@ Plug 'wincent/terminus'
 
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
-" Plug 'makerj/vim-pdf'
-"Plug 'xolox/vim-session'
-"Plug 'xolox/vim-misc' " vim-session dep
+Plug 'makerj/vim-pdf'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc' " vim-session dep
 
 " Dependencies
 " Plug 'MarcWeber/vim-addon-mw-utils'
@@ -651,8 +653,8 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " === eleline.vim
 " ===
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='deus'
-let g:airline_theme='dark'
+let g:airline_theme='deus'
+" let g:airline_theme='dark'
 " 设置字体 
 set guifont=Powerline_Consolas:h14:cANSI
 let g:Powerline_symbols = 'fancy'       " Powerline_symbols为状态栏中的箭头，unicode没有箭头
@@ -708,6 +710,7 @@ let g:coc_global_extensions = [
 \ 'coc-tsserver',
 \ 'coc-vetur',
 \ 'coc-vimlsp',
+\ 'coc-todolist',
 \ 'coc-yaml',
 \ 'coc-yank']
 " \ 'https://github.com/rodrigore/coc-tailwind-intellisense']
@@ -755,7 +758,7 @@ nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD :tab sp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> go <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
@@ -769,8 +772,8 @@ xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 " coctodolist
 nnoremap <leader>dn :CocCommand todolist.create<CR>
-nnoremap <leader>tl :CocList todolist<CR>
-nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
+nnoremap <leader>dl :CocList todolist<CR>
+nnoremap <leader>du :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 " coc-tasks
 noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
@@ -809,14 +812,14 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 set rtp+=/home/david/.linuxbrew/opt/fzf
-nnoremap <c-p> :Leaderf file<CR>
+" nnoremap <c-t> :Leaderf tag<CR>
 " noremap <silent> <C-p> :Files<CR>
-noremap <silent> <C-f> :Rg<CR>
+" noremap <silent> <C-f> :Rg<CR>
 " noremap <silent> <C-h> :History<CR>
-"noremap <C-t> :BTags<CR>
+" noremap <C-t> :BTags<CR>
 " noremap <silent> <C-l> :Lines<CR>
-noremap <silent> <C-w> :Buffers<CR>
-noremap <leader>; :History:<CR>
+" noremap <silent> <C-w> :Buffers<CR>
+" noremap <leader>; :History:<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -846,7 +849,10 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 " ===
 " === Leaderf
 " ===
-" let g:Lf_WindowPosition = 'popup'
+nnoremap <c-p> :Leaderf file<CR>
+nnoremap <c-f> :Leaderf function<CR>
+nnoremap <c-t> :Leaderf tag<CR>
+let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
@@ -989,7 +995,7 @@ let g:bullets_enabled_file_types = [
 " === Vista.vim
 " ===
 noremap <LEADER>v :Vista!!<CR>
-noremap <c-t> :silent! Vista finder coc<CR>
+" noremap <c-t> :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
@@ -1246,13 +1252,13 @@ noremap \p :echo expand('%:p')<CR>
 " ===
 " === vim-session
 " ===
-"let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
-"let g:session_autosave = 'no'
-"let g:session_autoload = 'no'
-"let g:session_command_aliases = 1
-"set sessionoptions-=buffers
-"set sessionoptions-=options
-"noremap sl :OpenSession<CR>
+let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+let g:session_command_aliases = 1
+set sessionoptions-=buffers
+set sessionoptions-=options
+noremap sl :OpenSession<CR>
 noremap sS :SaveSession<CR>
 noremap ss :SaveSession 
 noremap sc :SaveSession<CR>:CloseSession<CR>:q<CR>
